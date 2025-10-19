@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Censo</title>
+
+    <script src="js/clases.js"></script>
+    <script src="js/codigo.js"></script>
+
+
+    <!-- CSS -->
+    <!--Bootstrap CSS-->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <!--CSS Propio-->
+    <link href="css/estilos.css" rel="stylesheet" type="text/css" />
+
+    <!-- JavaScript -->
+    <!-- Popper.js + Bootstrap JS o Boostrap con Popper inc. -->
+    <script src="js/bootstrap.bundle.js"></script>
+    <!--<script src="js/popper.min.js"></script>-->
+    <!--<script src="js/bootstrap.js"></script>-->
+
+
+    <link href="css/estilos.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="container-fluid">
+    <!-- RESOLUCIONES -->
+    <p class="d-sm-none">Resolución: <strong>XS</strong></p>
+    <p class="d-none d-sm-block d-md-none">Resolución: <strong>SM</strong></p>
+    <p class="d-none d-md-block d-lg-none">Resolución: <strong>MD</strong></p>
+    <p class="d-none d-lg-block d-xl-none">Resolución: <strong>LG</strong></p>
+    <p class="d-none d-xl-block d-xxl-none">Resolución: <strong>XL</strong></p>
+    <p class="d-none d-xxl-block">Resolución: <strong>XXL</strong></p>
+
+
+    <h1>Censo Uruguay</h1>
+
+    <div id="i_ingresar" class="row text-center ">
+        <form action="#" method="post" class="col-6" >
+            <fieldset >
+                <legend >Ingresar a la aplicación</legend>
+
+                <label for="nombre_usuario">Nombre de usuario: </label><br>
+                <input type="text" id="nombre_usuario" placeholder="Ingresar usuario" class="w-0 p-2 my-1"><br>
+
+                <label for="i_contra">Contraseña: </label><br>
+                <input type="password" id="i_contra" placeholder="Ingresar contraseña" class="w-80 p-2 my-1" autocomplete="new-password"><br>
+
+                <label for="">Ingresar como <strong>Censista</strong></label><br>
+                <input type="button" id="btn_ingresar_censista" value="Ingresar" class="w-50 p-2 my-1"><br><br>
+
+                <label for="">Ingresar como <strong>Invitado</strong></label><br>
+                <input type="button" id="btn_ingresar_invitado" value="Ingresar" class="w-50 p-2 my-1"><br><br>
+
+                <label for="">Crear un usuario como <strong>censista</strong></label><br>
+                <input type="button" id="btn_registar" value="Registrarme" class="w-50 p-2 my-1">
+                <p id="p_iniciar"></p>
+            </fieldset>
+        </form>
+    </div><br>
+
+
+    <div id="i_cerrar_cession1" style="display:none" class="row justify-content-center align-items-center pt-1 text-center ">
+       
+            <label class="col-6 mt-3" for="">Cerrar sesion del usuario</label>
+            <input class="col-4 mt-3" type="button" name="" id="btn_cerrar_sesion" value="Cerrar Sesion"><br><br>
+       
+    </div>
+
+
+
+    <div id="i_registrar" style="display: none" >
+        <form action="#" method="post" class="d-flex justify-content-center align-items-center py-2">
+            <fieldset class="text-center">
+                <legend>Registrarse en la aplicación</legend>
+                <label for="nombre_censita">Nombre: </label><br>
+                <input type="text" id="nombre_censista" placeholder="Ingresar nombre"><br>
+
+                <label for="nombre_usuario_censista">Nombre de usuario: </label><br>
+                <input type="text" id="nombre_usuario_censista" placeholder="Ingresar usuario"><br>
+
+                <label for="pass_censista">Contraseña: </label><br>
+                <input type="password" id="pass_censista" placeholder="Ingresar contraseña" autocomplete="new-password"><br><br>
+
+                <input type="button" id="btn_registar_censista" value="Registrarme">
+
+                <p id="p_mensaje"></p>
+            </fieldset>
+        </form><br>
+    </div>
+
+
+    <div id="i_ingresar_datos" style="display:none"  >
+        <form action="#" method="post" class="d-flex justify-content-center align-items-center py-2">
+            <fieldset class="text-center">
+                <legend>Ingresar datos</legend>
+                <label for="id_cedula">Consultar censos pre completados: </label><br>
+                <input type="text" id="id_cedula" placeholder="Ingresar cedula">
+                <input type="button" id="btn_verificar_cedula" value="Buscar"><br><br><br>
+
+                <label for="i_nombre_persona">Nombre y Apellido: </label><br>
+                <input type="text" id="i_nombre_persona" placeholder="Ingresar nombre y apellido"><br>
+
+                <label for="i_edad_persona">Edad: </label><br>
+                <input type="number" id="i_edad_persona" placeholder="Ingresar edad"><br>
+
+                <label for="i_cedula_persona">Cedula: </label><br>
+                <input type="text" id="i_cedula_persona" placeholder="Ingresar cedula"><br>
+
+                <label for="">Departamento: </label><br>
+                <select id="i_select_departamento">
+                </select><br>
+
+                <label for="">Ocupación </label><br>
+                <select id="i_select_ocupacion">
+                    <option value="i_s_error">Seleccionar...</option>
+                    <option value="dependiente">Dependiente</option>
+                    <option value="independiente">Independiente</option>
+                    <option value="estudiante">Estudiante</option>
+                    <option value="no_trabaja">No trabajo</option>
+                </select><br>
+
+                <input type="button" id="btn_borrar_datos" value="Borrar" class="w-100 my-3" >
+                <input type="button" id="btn_guardar_datos1" value="Guardar" class="w-100 my-3"  >
+                <input type="button" id="btn_guardar_datos2" value="Validar Censo" class="w-100 my-3" >
+                <p id="p_mensaje2"></p>
+            </fieldset>
+        </form>
+    </div><br>
+
+    <!--       REASIGNAR     -->
+    <div id="i_reasignar" style="display:none">
+        <form action="#" method="post" class="d-flex justify-content-center align-items-center py-2">
+            <fieldset >
+                <legend>Reasignar persona</legend>
+                <label for="">Seleccionar Persona</label>
+                <select id="ci_persona_pendiente" class="w-50">
+                    <option value="ss">Seleccionar...</option>
+
+                </select>
+                <label for="">Seleccionar Censista</label>
+                <select id="usuario_censista" value="" class="w-50">
+                    <option value="sss">Seleccionar...</option>
+
+                </select>
+                <input type="button" id="btn_reasignar" value="Reasignar" >
+                <p id="p_mensaje3"></p>
+            </fieldset>
+        </form>
+    </div><br>
+
+    <!--       ESTADISTICAS    1    -->
+    <div id="i_est" style="display:none">
+        <form action="#" method="post" class="d-flex justify-content-center align-items-center py-2">
+            <fieldset class="row">
+                <legend class="py-2">Estadisticas</legend>
+
+                <table id="tabla_censista1" border="2" class="py-2 my-2">
+                </table><br>
+
+
+                <table id="tabla_censista2" border="2" class="py-2 my-2 text-center">
+                    <tr>
+                        <td>Porcentaje(%) de personas pendientes</td>
+                    </tr>
+                </table><br>
+
+                <table id="tabla_censista3" border="2" class="py-2 my-2 text-center">
+                    <tr>
+                        <td>Departamento</td>
+                        <td>Menores de edad</td>
+                        <td>Mayores de edad</td>
+                    </tr>
+                    <tr>
+                        <td><select id="select_mayores_menores">
+
+                            </select></td>
+                        <td id="i_menores"></td>
+                        <td id="i_mayores"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" value="         Ver         " id="btn_est">
+                        </td>
+                    </tr>
+                </table>
+
+            </fieldset>
+        </form>
+    </div><br><br><br>
+
+
+    <!--       ESTADUSTUCAS    2    -->
+
+    <div class="row justify-content-center align-items-center text-center">
+        <div id="i_estadisticas_persona" class="col-sm-8 col-md-10">
+            <h2 class="">Estadísticas</h2>
+            <table class="table table-dark table-striped">
+                <tr>
+                    <th>Departamento</th>
+                    <th>Estudian</th>
+                    <th>Trabajan</th>
+                    <th>Dependientes e independientes</th>
+                    <th>Porcentaje total censados</th>
+
+                </tr>
+                <tr>
+                    <td>Artigas</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Canelones</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Cerro Largo</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Colonia</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Durazno</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+
+                <tr>
+                    <td>Flores</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Florida</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Lavalleja</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Maldonado</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Montevideo</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Paysandú</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Rio Negro</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Rivera</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Rocha</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Salto</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>San Jose</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Soriano</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Tacuarembó</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Treinta y Tres </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>TOTAL</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
